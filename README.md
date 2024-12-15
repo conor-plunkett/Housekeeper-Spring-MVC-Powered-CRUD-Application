@@ -6,11 +6,11 @@ Web based functionality facilitates the operation of the program to provide real
 Powered by customised Spring Boot and Boot Strap technology.
 
 ## Spring Dependencies Used
-Spring Web - 	Builds web services using Spring MVC.
-Spring Data - JPA	Persists data into SQL stores for communication purposes.
-MySQL Driver- JDBC Driver for MySQL connectivity.
-Lombok - Annotation library reducing boilerplate Java code.
-Thymeleaf - Frontend templating and data presentation tool.
+- Spring Web - Builds web services using Spring MVC
+- Spring Data - JPA	Persists data into SQL stores for communication purposes
+- MySQL Driver- JDBC Driver for MySQL connectivity
+- Lombok - Annotation library reducing boilerplate Java code
+- Thymeleaf - Frontend templating and data presentation tool
 
 ##  Model Structres
 Various models are utilised in the methods and altered or returned dependent on the methods employed.
