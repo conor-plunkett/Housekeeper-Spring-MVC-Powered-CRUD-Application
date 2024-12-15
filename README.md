@@ -56,7 +56,7 @@ Controllers aid in the HTML mapping of the aforementioned models, allowing alter
 - HomeController
 - HousekeepingController
 - Room Controller
-- 
+  
 ## Services
 Three services cover the core functionality of the application
 1. Service 1 - Employee Management
