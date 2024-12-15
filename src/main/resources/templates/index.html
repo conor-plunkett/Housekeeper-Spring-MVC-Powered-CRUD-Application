@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">#
+
+<!-- Header-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Housekeeping management tools for short-term lodging operations." />
+  <meta name="author" content="Conor Plunkett" />
+  <title>Housekeeping Dashboard</title>
+  <!-- CSS Connection Path -->
+  <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
+  <!-- Favicon -->
+  <!-- Source: https://www.flaticon.com/free-icons/sponge Sponge icons created by Freepik - Flaticon -->
+  <!-- <link rel="icon" href="../static/img/sponge.png" th:href="@{/img/sponge.png}" /> -->
+
+  <!-- <link rel="icon" href="images/logo.png"> -->
+  <link rel="shortcut icon" th:href="@{static/favicon.ico}">
+
+  <!-- JS Script Imports -->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" th:href="@{/}">Housekeeper <img src="../static/img/sponge.png"
+        th:src="@{/img/sponge.png}" alt="A sponge icon." class="sponge-icon" width="25px">
+    </a>
+
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+        class="fas fa-bars"></i></button>
+    <!-- Navbar Placement -->
+    <div class="input-group">
+    </div>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="@{/}" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#!">Settings</a></li>
+          <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li><a class="dropdown-item" href="#!">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <!-- Sidebar -->
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <div class="sb-sidenav-menu-heading">Core</div>
+            <a class="nav-link" th:href="@{/}">
+              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+              Dashboard
+            </a>
+            <a class="nav-link" th:href="@{/housekeeping/table}">
+              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+              Housekeeping Assignments
+            </a>
+            <div class="sb-sidenav-menu-heading">Interface</div>
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+              aria-expanded="false" aria-controls="collapseLayouts">
+              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+              Tables <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href=/employees/table>Employees </a>
+                <a class="nav-link" href="/rooms/table">Rooms</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- Logged in Display -->
+        <div class="sb-sidenav-footer">
+          <div class="small">Logged in as:</div>
+          Housekeeper Administrator
+        </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+
+      <main>
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Your Housekeeping Overview</h1>
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+
+          <!-- Cards -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card text-white mb-4">
+                <div class="card-body bg-primary ">Housekeeping Staff</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr th:each="employee, cardLength : ${employees}" th:unless="${cardLength.index > 7}">
+                      <td th:text="${employee.empID}"></td>
+                      <td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-primary ">
+                  <a class="small text-white stretched-link bg-primary " href="/employees/table">View All</a>
+                  <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card text-white mb-4">
+                <div class="card-body bg-warning">Awaiting Cleaning</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Type</th>
+                      <th>Assigned To</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="table-group-divider">
+                    <tr th:each="housekeeping, cardLength : ${dirtyRooms}" th:unless="${cardLength.index > 7}">
+                      <td th:text="${housekeeping.roomNo}"></td>
+                      <td th:text="${housekeeping.purpose}"></td>
+                      <td th:text="${housekeeping.firstName} + ' ' + ${housekeeping.lastName}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-warning">
+                  <a class="small text-white stretched-link bg-warning" href="/housekeeping/table">View All</a>
+                  <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card text-white mb-4" id="dashboard-card-content">
+                <div class="card-body bg-success">Cleaned</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Type</th>
+                      <th>Cleaned By</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr th:each="housekeeping, cardLength : ${cleanedRooms}" th:unless="${cardLength.index > 7}">
+                      <td th:text="${housekeeping.roomNo}"></td>
+                      <td th:text="${housekeeping.purpose}"></td>
+                      <td th:text="${housekeeping.firstName} + ' ' + ${housekeeping.lastName}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-success">
+                  <a class="small text-white stretched-link bg-success" href=/housekeeping/table>View All</a>
+                  <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card text-white mb-4">
+                <div class="card-body bg-danger">Inactive Rooms</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Room</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr th:each="room, cardLength : ${inactiveRooms}" th:unless="${cardLength.index > 7}">
+                      <td th:text="${room.roomNo}"></td>
+                      <td th:text="${room.purpose}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="card-footer d-flex align-items-center justify-content-between bg-danger">
+                  <a class="small text-white stretched-link bg-danger" href="/rooms/table">View Details</a>
+                  <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <script th:inline="javascript">
+            /*<![CDATA[*/
+            var cleaned = /*[[${stats.cleaned}]]*/ Test;
+            var dirty = /*[[${stats.dirty}]]*/ Test;
+            var inactive = /*[[${stats.inactive}]]*/ Test;
+            var total = /*[[${stats.total}]]*/ Test;
+            /*]]>*/
+          </script>
+
+          <!-- Bar Chart -->
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <i class="fas fa-chart-bar me-1"></i>
+                  Cleaning Roundup
+                </div>
+                <script th:inline="javascript">
+                  /*<![CDATA[*/
+                  var cleaned = /*[[${stats.cleaned}]]*/ Test;
+                  var dirty = /*[[${stats.dirty}]]*/ Test;
+                  var inactive = /*[[${stats.inactive}]]*/ Test;
+                  var total = /*[[${stats.total}]]*/ Test;
+                  /*]]>*/
+                </script>
+                <div class="card-body"><canvas id="cleanedBarChart" width="100%" height="50">
+                  </canvas></div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-6">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <i class="fas fa-chart-pie me-1"></i>
+                  Rooms Overview
+                </div>
+                <script th:inline="javascript">
+                  /*<![CDATA[*/
+                  var cleaned = /*[[${stats.cleaned}]]*/ Test;
+                  var dirty = /*[[${stats.dirty}]]*/ Test;
+                  var inactive = /*[[${stats.inactive}]]*/ Test;
+                  var total = /*[[${stats.total}]]*/ Test;
+                  /*]]>*/
+                </script>
+                <div class="card-body"><canvas id="cleanedPieChart" width="100%" height="50"></canvas></div>
+                <div class="card-footer small text-muted" id="time"></div>
+              </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="row">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <i class="fas fa-table me-1"></i>
+                  Rooms Overview
+                </div>
+                <div class="card-body">
+                  <table id="datatablesSimple" class="table">
+                    <thead>
+                      <tr>
+                        <th>Floor</th>
+                        <th>Room Number</th>
+                        <th>Type</th>
+                        <th>Active</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr th:each="room : ${rooms}">
+                        <td th:text="${room.floor}"></td>
+                        <td th:text="${room.roomNo}"></td>
+                        <td th:text="${room.purpose}"></td>
+                        <td th:text="${room.active}"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; HouseKeeper 2024; Conor Plunkett</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+            <a href="https://www.flaticon.com/free-icons/sponge" title="sponge icons">Sponge icons created by Freepik
+              - Flaticon</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+  <!-- Local Scripts -->
+  <script type="text/javascript" th:src="@{/js/datatables-simple-demo.js}"></script>
+  <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+  <!-- Chart Scripts -->
+  <script type="text/javascript" th:src="@{js/chart-pie-cleaned.js}"></script>
+  <script type="text/javascript" th:src="@{js/chart-bar-uncleaned.js}"></script>
+  <script type="text/javascript" th:src="@{js/main.js}"></script>
+
+</body>
+
+</html>
