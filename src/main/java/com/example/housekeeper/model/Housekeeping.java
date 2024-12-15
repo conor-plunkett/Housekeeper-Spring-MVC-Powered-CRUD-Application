@@ -1,4 +1,4 @@
-package com.example.crud.model;
+package com.example.housekeeper.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -23,8 +23,6 @@ public class Housekeeping {
     private String firstName;
 
     private String lastName;
-
-    private String role;
 
     private String status;
 

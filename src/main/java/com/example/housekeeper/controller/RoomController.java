@@ -1,4 +1,4 @@
-package com.example.crud.controller;
+package com.example.housekeeper.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.crud.model.Employee;
-import com.example.crud.model.Room;
-import com.example.crud.service.*;
+import com.example.housekeeper.model.Employee;
+import com.example.housekeeper.model.Room;
+import com.example.housekeeper.service.*;
 
 @Controller
 @RequestMapping("/rooms")

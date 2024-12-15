@@ -1,11 +1,11 @@
-package com.example.crud.repository;
+package com.example.housekeeper.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.example.crud.model.Employee;
+import com.example.housekeeper.model.Employee;
 
 // extends model and PK type
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

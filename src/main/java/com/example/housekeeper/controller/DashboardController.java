@@ -1,4 +1,4 @@
-package com.example.crud.controller;
+package com.example.housekeeper.controller;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.crud.model.Housekeeping;
-import com.example.crud.model.Stats;
-import com.example.crud.service.EmployeeService;
-import com.example.crud.service.HousekeepingService;
-import com.example.crud.service.RoomService;
+import com.example.housekeeper.model.Housekeeping;
+import com.example.housekeeper.model.Stats;
+import com.example.housekeeper.service.EmployeeService;
+import com.example.housekeeper.service.HousekeepingService;
+import com.example.housekeeper.service.RoomService;
 
 @Controller
 public class DashboardController {

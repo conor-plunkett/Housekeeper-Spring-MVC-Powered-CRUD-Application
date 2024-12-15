@@ -1,4 +1,4 @@
-package com.example.crud.service.impl;
+package com.example.housekeeper.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.crud.model.Room;
-import com.example.crud.repository.HousekeepingRepository;
-import com.example.crud.repository.RoomRepository;
-import com.example.crud.service.RoomService;
+import com.example.housekeeper.model.Room;
+import com.example.housekeeper.repository.HousekeepingRepository;
+import com.example.housekeeper.repository.RoomRepository;
+import com.example.housekeeper.service.RoomService;
 
 @Service
 public class RoomServiceImpl implements RoomService {

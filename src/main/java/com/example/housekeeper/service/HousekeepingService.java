@@ -1,11 +1,11 @@
-package com.example.crud.service;
+package com.example.housekeeper.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.crud.model.Housekeeping;
-import com.example.crud.model.Room;
+import com.example.housekeeper.model.Housekeeping;
+import com.example.housekeeper.model.Room;
 
 @Service
 public interface HousekeepingService {

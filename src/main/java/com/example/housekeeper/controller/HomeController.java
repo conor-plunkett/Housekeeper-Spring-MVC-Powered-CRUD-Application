@@ -1,4 +1,4 @@
-package com.example.crud.controller;
+package com.example.housekeeper.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 

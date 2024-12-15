@@ -1,4 +1,4 @@
-package com.example.crud.controller;
+package com.example.housekeeper.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.crud.model.Employee;
-import com.example.crud.service.*;
+import com.example.housekeeper.model.Employee;
+import com.example.housekeeper.service.*;
 
 @Controller
 @RequestMapping("/employees")

@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.housekeeper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
