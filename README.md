@@ -82,4 +82,26 @@ All access to the service is intuitively presented throughout the HTML pages. Th
 10. List information on all rooms, employees, and housekeeping assignments
 11. Store related data in an associated database
 
+## Gallery
+The following images showcase some of the key functionalities of the service. 
+
+### Dashboard
+![image](https://github.com/user-attachments/assets/7d38ccef-1cf9-4003-88fb-2c48c38b6ab3)
+
+### Dynamic JavaScript Graphing
+![image](https://github.com/user-attachments/assets/7c1cdb8e-6ba0-4995-87b3-0cfb5da0c1d3)
+
+### JsDelivr Table Evolution
+![image](https://github.com/user-attachments/assets/be5c1a35-91a5-40c3-b410-e58a45d6cef0)
+
+### Responsive Screen Design
+![image](https://github.com/user-attachments/assets/8a9c1fe3-8403-4717-ba6b-53764b262ee6)
+
+### Batch Addition of Rooms
+![image](https://github.com/user-attachments/assets/851f40f1-1a93-4bd5-aecc-2c3bffcd05e9)
+
+### Employee Generation
+![image](https://github.com/user-attachments/assets/05d0c77b-3ed3-4e76-b65a-7093a0bd4218)
+
+
 Copyright 2024, Conor Plunkett
